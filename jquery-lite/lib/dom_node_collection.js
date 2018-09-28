@@ -88,6 +88,18 @@ class DOMNodeCollection {
     this.els = [];
   }
   
+  on(type, callback) {
+    this.onCallback = callback;
+    this.els.forEach( el => {
+      el.addEventListener(type, callback);
+    });
+  }
+  
+  off(type) {
+    this.els.forEach( el => {
+      el.removeEventListener(type, this.onCallback);
+    });
+  }
     
 }
 
